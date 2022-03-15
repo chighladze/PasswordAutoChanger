@@ -15,7 +15,7 @@ devices = jarvisdb.Query("""
                               AND LENGTH(a.mac) = 17
                               AND a.mac NOT LIKE 'ja:rv:is:%'
                               AND a.mac LIKE '%:%'
-                              AND a.ip LIKE '10.21.0.2%'
+                              AND a.ip LIKE '%.%'
                             ORDER BY a.ip ASC
                         """)
 
@@ -66,7 +66,7 @@ for mac, ip in devices:
                 try:
                     connect = client.connect(ip, username=i[0], password=i[1])
                 except:
-                    print("Conttiniu")
+                    print(f"Conttiniu {i}")
                     client.close()
                     continue
 
