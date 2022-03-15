@@ -45,7 +45,7 @@ for mac, ip in devices:
                     a_socket.close()
                 else:
                     port = 'not open'
-                    with open(r"C:\Users\giorgi2\Desktop\SSH Port is Not Open.txt", "a") as file_object:
+                    with open(r"C:\Users\giorgi\Desktop\SSH Port is Not Open.txt", "a") as file_object:
                         file_object.write(f"{ip}\n")
                     print(f"{ip} --- SSH Port Is Not Open.")
                     print("--------------------------------------------------------------")
@@ -70,9 +70,7 @@ for mac, ip in devices:
                     client.close()
                     continue
 
-                if [connect][0] != None:
-                    continue
-                elif [connect][0] == None and i[1] == 'ubnt1' or i[1] == 'q1w2Admin' or i[1] == 'q1w2Admin' or i[1] == 'admin1':
+                if [connect][0] == None and i[1] == 'ubnt1' or i[1] == 'q1w2Admin' or i[1] == 'q1w2Admin' or i[1] == 'admin1':
                     print(f"Password Already Changed - {ip}")
                     print("--------------------------------------------------------------")
                     break
@@ -100,13 +98,13 @@ for mac, ip in devices:
                 print("--------------------------------------------------------------")
                 break
             if len(allpasswords) == allpasswords.index(i) + 1:
-                with open(r"C:\Users\giorgi2\Desktop\Wrong Username or Password.txt", "a") as file_object:
+                with open(r"C:\Users\giorgi\Desktop\Wrong Username or Password.txt", "a") as file_object:
                     file_object.write(f"{ip}\n")
                     print("Password is Not Changed")
                 break
 
         else:
-            with open(r"C:\Users\giorgi2\Desktop\Ping - Request timed out.txt", "a") as file_object:
+            with open(r"C:\Users\giorgi\Desktop\Ping - Request timed out.txt", "a") as file_object:
                 file_object.write(f"{ip}\n")
     else:
         print(f"{ip}  {manufacturer}Other manufacturer")
