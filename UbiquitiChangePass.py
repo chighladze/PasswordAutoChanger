@@ -101,7 +101,7 @@ for mac, ip in devices:
                 with open(r"C:\Users\giorgi\Desktop\Wrong Username or Password.txt", "a") as file_object:
                     file_object.write(f"{ip}\n")
                     print("Password is Not Changed")
-                break
+                continue
 
         else:
             with open(r"C:\Users\giorgi\Desktop\Ping - Request timed out.txt", "a") as file_object:
