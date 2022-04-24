@@ -15,7 +15,7 @@ devices = jarvisdb.Query("""
                               AND LENGTH(a.mac) = 17
                               AND a.mac NOT LIKE 'ja:rv:is:%'
                               AND a.mac LIKE '%:%'
-                              AND a.ip LIKE '10.221.63.218%'
+                              AND a.ip LIKE '10.%'
                             ORDER BY a.ip ASC
                         """)
 
@@ -23,7 +23,6 @@ allpasswords = UserDevicePass.allpasswordsubnt
 
 print(len(devices))
 numirate = 0
-
 
 for mac, ip in devices:
     print("--------------------------------------------------------------")
@@ -72,7 +71,8 @@ for mac, ip in devices:
                         client.close()
                         continue
 
-                    if [connect][0] == None and i[1] == 'ubnt1' or i[1] == 'q1w2Admin' or i[1] == 'q1w2Admin' or i[1] == 'admin1':
+                    if [connect][0] == None and i[1] == 'ubnt1' or i[1] == 'q1w2Admin' or i[1] == 'q1w2Admin' or i[
+                        1] == 'admin1':
                         print(f"Password Already Changed - {ip}")
                         print("--------------------------------------------------------------")
                         break
@@ -84,8 +84,10 @@ for mac, ip in devices:
                             for line in stdout:
                                 print(line.strip('\n'))
                                 if [line][0][0:12] == 'syntax error':
-                                    stdin, stdout, stderr = client.exec_command("/user add name=admin group=full password=admin1")
-                                    stdin, stdout, stderr = client.exec_command("/user set [find name=admin] password=admin1")
+                                    stdin, stdout, stderr = client.exec_command(
+                                        "/user add name=admin group=full password=admin1")
+                                    stdin, stdout, stderr = client.exec_command(
+                                        "/user set [find name=admin] password=admin1")
                                     print("Mikrotik Add New Password")
                                 print("Username and Password Changed Successfully")
                                 stdin.close()
@@ -114,8 +116,6 @@ for mac, ip in devices:
     else:
         print(f"{ip}  {manufacturer}Other manufacturer")
         print("--------------------------------------------------------------")
-
-
 
 print(datetime.now() - starttime)
 print(ip, mac)
